@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -11,25 +11,21 @@ table 5262 "Standard Account Category"
 
     fields
     {
-        field(1; "Standard Account Type"; enum "Standard Account Type")
+        field(1; "Standard Account Type"; Enum "Standard Account Type")
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account Type';
         }
         field(2; "No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'No.';
             NotBlank = true;
         }
         field(3; Description; Text[250])
         {
-            DataClassification = CustomerContent;
             Caption = 'Description';
         }
         field(4; "Extended No."; Text[500])
         {
-            DataClassification = CustomerContent;
             Caption = 'Extended No.';
         }
     }

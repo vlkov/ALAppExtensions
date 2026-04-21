@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -15,33 +15,33 @@ codeunit 5261 "Audit File Export Mgt."
     TableNo = "Audit File Export Header";
 
     var
-        ExportIsInProgressMsg: label 'The export is in progress. Starting a new job cancels the current progress.\';
-        LinesInProgressOrCompletedMsg: label 'One or more export document lines are in progress or completed.\';
-        CancelExportIsInProgressQst: label 'Do you want to cancel all export jobs and restart?';
-        DeleteExportIsInProgressQst: label 'Do you want to delete the export entry?';
-        RestartExportLineQst: label 'Do you want to restart the export for this line?';
-        ExportIsCompletedQst: label 'The export was completed. You can download the export result choosing the Download Audit File action.\';
-        RestartExportQst: label 'Do you want to restart the export to get a new audit file?';
-        SetStartDateTimeAsCurrentQst: label 'The Earliest Start Date/Time field is not filled in. Do you want to proceed and start the export immediately?';
-        AuditFileExportTxt: label 'Audit File Export';
-        StartingExportTxt: label 'Starting audit file export with ID: %1, Parallel: %2, Split By Month: %3', Comment = '%1 - integer; %2, %3 - boolean';
-        CancellingExportTxt: label 'Cancelling audit file export with ID: %1, Task ID: %2', Comment = '%1 - integer; %2 - GUID';
-        NotPossibleToScheduleMsg: label 'You are not allowed to schedule the audit file generation';
-        GenerateAuditFileImmediatelyQst: label 'Since you did not schedule the audit file generation, it will be generated immediately which can take a while. Do you want to continue?';
-        NoErrorMessageErr: label 'The generation of the audit file failed but no error message was logged.';
-        AuditFileGeneratedTxt: label 'Audit file was generated.';
-        AuditFileNotGeneratedTxt: label 'Audit file was not generated.';
-        ParallelAuditFileGenerationTxt: label 'Parallel audit file generation';
-        SaveFileDialogTxt: label 'Export audit file';
-        NoFileGeneratedErr: label 'No file was generated.';
-        NoExportLinesCreatedErr: label 'No audit file export document lines were created.';
-        NoOfJobsInProgressTxt: label 'Number of jobs in progress: %1', Comment = '%1 = number';
-        JobsStartedOrFailedTxt: label 'There are %1 jobs which are not started or failed', Comment = '%1 = number';
-        SessionLostTxt: label 'The task for the line %1 was lost.', Comment = '%1 = number';
-        NotPossibleToScheduleTxt: label 'It is not possible to schedule the task for line %1 because the Max. No. of Jobs is %2.', Comment = '%1,%2 = numbers';
-        ScheduleTaskForLineTxt: label 'Schedule a task for the line %1.', Comment = '%1 = number';
-        AuditFileAlreadyExistsQst: label 'The audit file already exists and is ready for downloading. Do you want to recreate the audit file?';
-        TwoStringsTxt: label '%1%2', Comment = '%1, %2 - two strings to concatenate', Locked = true;
+        ExportIsInProgressMsg: Label 'The export is in progress. Starting a new job cancels the current progress.\';
+        LinesInProgressOrCompletedMsg: Label 'One or more export document lines are in progress or completed.\';
+        CancelExportIsInProgressQst: Label 'Do you want to cancel all export jobs and restart?';
+        DeleteExportIsInProgressQst: Label 'Do you want to delete the export entry?';
+        RestartExportLineQst: Label 'Do you want to restart the export for this line?';
+        ExportIsCompletedQst: Label 'The export was completed. You can download the export result choosing the Download Audit File action.\';
+        RestartExportQst: Label 'Do you want to restart the export to get a new audit file?';
+        SetStartDateTimeAsCurrentQst: Label 'The Earliest Start Date/Time field is not filled in. Do you want to proceed and start the export immediately?';
+        AuditFileExportTxt: Label 'Audit File Export';
+        StartingExportTxt: Label 'Starting audit file export with ID: %1, Parallel: %2, Split By Month: %3', Comment = '%1 - integer; %2, %3 - boolean';
+        CancellingExportTxt: Label 'Cancelling audit file export with ID: %1, Task ID: %2', Comment = '%1 - integer; %2 - GUID';
+        NotPossibleToScheduleMsg: Label 'You are not allowed to schedule the audit file generation';
+        GenerateAuditFileImmediatelyQst: Label 'Since you did not schedule the audit file generation, it will be generated immediately which can take a while. Do you want to continue?';
+        NoErrorMessageErr: Label 'The generation of the audit file failed but no error message was logged.';
+        AuditFileGeneratedTxt: Label 'Audit file was generated.';
+        AuditFileNotGeneratedTxt: Label 'Audit file was not generated.';
+        ParallelAuditFileGenerationTxt: Label 'Parallel audit file generation';
+        SaveFileDialogTxt: Label 'Export audit file';
+        NoFileGeneratedErr: Label 'No file was generated.';
+        NoExportLinesCreatedErr: Label 'No audit file export document lines were created.';
+        NoOfJobsInProgressTxt: Label 'Number of jobs in progress: %1', Comment = '%1 = number';
+        JobsStartedOrFailedTxt: Label 'There are %1 jobs which are not started or failed', Comment = '%1 = number';
+        SessionLostTxt: Label 'The task for the line %1 was lost.', Comment = '%1 = number';
+        NotPossibleToScheduleTxt: Label 'It is not possible to schedule the task for line %1 because the Max. No. of Jobs is %2.', Comment = '%1,%2 = numbers';
+        ScheduleTaskForLineTxt: Label 'Schedule a task for the line %1.', Comment = '%1 = number';
+        AuditFileAlreadyExistsQst: Label 'The audit file already exists and is ready for downloading. Do you want to recreate the audit file?';
+        TwoStringsTxt: Label '%1%2', Comment = '%1, %2 - two strings to concatenate', Locked = true;
 
     procedure StartExport(var AuditFileExportHeader: Record "Audit File Export Header")
     var
@@ -455,7 +455,7 @@ codeunit 5261 "Audit File Export Mgt."
         DataCompression.SaveZipArchive(ZipOutStream);
         DataCompression.CloseZipArchive();
         AuditFile."File Size" := GetAuditFileSizeText(AuditFile);
-        if AuditFile."File Content".HasValue then
+        if AuditFile."File Content".HasValue() then
             AuditFile.Insert();
     end;
 
@@ -485,7 +485,7 @@ codeunit 5261 "Audit File Export Mgt."
             DataCompression.SaveZipArchive(ZipOutStream);
             DataCompression.CloseZipArchive();
             AuditFile."File Size" := GetAuditFileSizeText(AuditFile);
-            if AuditFile."File Content".HasValue then
+            if AuditFile."File Content".HasValue() then
                 AuditFile.Insert();
         until AuditFileExportLine.Next() = 0;
     end;
@@ -509,7 +509,7 @@ codeunit 5261 "Audit File Export Mgt."
             AuditFile."File Content".CreateOutStream(AuditFileOutStream);
             CopyStream(AuditFileOutStream, EntryFileInStream);
             AuditFile."File Size" := GetAuditFileSizeText(AuditFile);
-            if AuditFile."File Content".HasValue then
+            if AuditFile."File Content".HasValue() then
                 AuditFile.Insert();
         until AuditFileExportLine.Next() = 0;
     end;
@@ -519,7 +519,7 @@ codeunit 5261 "Audit File Export Mgt."
         SizeInMbytes: Decimal;
         SizeInGbytes: Decimal;
     begin
-        SizeInMbytes := Round(AuditFile."File Content".Length / (1024 * 1024));
+        SizeInMbytes := Round(AuditFile."File Content".Length() / (1024 * 1024));
         if SizeInMbytes <= 1024 then
             exit(StrSubstNo(TwoStringsTxt, Format(SizeInMbytes), ' MB'));
 
@@ -539,7 +539,7 @@ codeunit 5261 "Audit File Export Mgt."
             exit;
         end;
 
-        if AuditFile.Count > 1 then begin
+        if AuditFile.Count() > 1 then begin
             AuditFilesPage.SetTableView(AuditFile);
             AuditFilesPage.RunModal();
         end;
@@ -658,7 +658,7 @@ codeunit 5261 "Audit File Export Mgt."
         LogSuccess(AuditFileExportLine);
         StartExportLinesNotStartedYet(AuditFileExportHeader);
 
-        AuditFileExportHeader.Get(AuditFileExportHeader.Id);
+        AuditFileExportHeader.Get(AuditFileExportHeader.ID);
         NotifyAuditFileExportLineCompleted(AuditFileExportHeader);
     end;
 
@@ -688,7 +688,7 @@ codeunit 5261 "Audit File Export Mgt."
         SessionEvent.SetRange("Server Instance ID", AuditFileExportLine."Server Instance ID");
         SessionEvent.SetRange("Session ID", AuditFileExportLine."Session ID");
         SessionEvent.SetRange("Event Type", SessionEvent."Event Type"::Logoff);
-        AuditFileExportHeader.Get(AuditFileExportLine.Id);
+        AuditFileExportHeader.Get(AuditFileExportLine.ID);
         SessionEvent.SetFilter("Event Datetime", '>%1', AuditFileExportHeader."Earliest Start Date/Time");
         SessionEvent.SetRange("User SID", UserSecurityId());
         exit(not SessionEvent.IsEmpty());

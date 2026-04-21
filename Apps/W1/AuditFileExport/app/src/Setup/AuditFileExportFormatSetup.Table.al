@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -8,22 +8,21 @@ table 5268 "Audit File Export Format Setup"
 {
     DataClassification = CustomerContent;
     Caption = 'Audit File Export Format Setup';
+    LookupPageId = "Audit File Export Format Setup";
+    DrillDownPageId = "Audit File Export Format Setup";
 
     fields
     {
-        field(1; "Audit File Export Format"; enum "Audit File Export Format")
+        field(1; "Audit File Export Format"; Enum "Audit File Export Format")
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Export Format';
         }
         field(3; "Audit File Name"; Text[1024])
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Name';
         }
         field(4; "Archive to Zip"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Archive to Zip';
         }
     }
@@ -36,7 +35,7 @@ table 5268 "Audit File Export Format Setup"
         }
     }
 
-    procedure InitSetup(AuditFileExportFormat: enum "Audit File Export Format"; AuditFileName: Text[1024]; ArchiveToZip: Boolean)
+    procedure InitSetup(AuditFileExportFormat: Enum "Audit File Export Format"; AuditFileName: Text[1024]; ArchiveToZip: Boolean)
     begin
         if not Rec.Get(AuditFileExportFormat) then begin
             Rec."Audit File Export Format" := AuditFileExportFormat;

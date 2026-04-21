@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -21,17 +21,14 @@ page 5270 "Audit File Export Format Setup"
             {
                 field(AuditFileExportFormat; Rec."Audit File Export Format")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the Audit File Export Format';
                 }
                 field(AuditFileName; Rec."Audit File Name")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the default file name or the file name template for the audit file.';
                 }
                 field(ArchiveToZip; Rec."Archive to Zip")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies whether to archive the audit file to a ZIP file.';
                 }
             }
@@ -44,7 +41,6 @@ page 5270 "Audit File Export Format Setup"
         {
             action(SelectExportDataTypes)
             {
-                ApplicationArea = Basic, Suite;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;

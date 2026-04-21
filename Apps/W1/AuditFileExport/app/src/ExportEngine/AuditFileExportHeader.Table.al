@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -11,19 +11,19 @@ table 5265 "Audit File Export Header"
 {
     DataClassification = CustomerContent;
     Caption = 'Audit File Export Header';
+    LookupPageId = "Audit File Export Documents";
+    DrillDownPageId = "Audit File Export Documents";
 
     fields
     {
         field(1; ID; Integer)
         {
-            DataClassification = CustomerContent;
             Caption = 'ID';
             AutoIncrement = true;
             Editable = false;
         }
         field(2; "G/L Account Mapping Code"; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'G/L Account Mapping Code';
             TableRelation = "G/L Account Mapping Header" where("Audit File Export Format" = field("Audit File Export Format"));
 
@@ -41,9 +41,8 @@ table 5265 "Audit File Export Header"
                 end;
             end;
         }
-        field(3; "Audit File Export Format"; enum "Audit File Export Format")
+        field(3; "Audit File Export Format"; Enum "Audit File Export Format")
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Export Format';
 
             trigger OnValidate()
@@ -58,32 +57,26 @@ table 5265 "Audit File Export Header"
         }
         field(4; "Audit File Name"; Text[1024])
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Name';
         }
         field(5; "Starting Date"; Date)
         {
-            DataClassification = CustomerContent;
             Caption = 'Starting Date';
         }
         field(6; "Ending Date"; Date)
         {
-            DataClassification = CustomerContent;
             Caption = 'Ending Date';
         }
         field(10; "Header Comment"; Text[250])
         {
-            DataClassification = CustomerContent;
             Caption = 'Header Comment';
         }
         field(11; Contact; Text[250])
         {
-            DataClassification = CustomerContent;
             Caption = 'Contact';
         }
         field(15; "Split By Month"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Split By Month';
             InitValue = true;
 
@@ -95,7 +88,6 @@ table 5265 "Audit File Export Header"
         }
         field(16; "Split By Date"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Split By Date';
 
             trigger OnValidate()
@@ -106,7 +98,6 @@ table 5265 "Audit File Export Header"
         }
         field(17; "Archive to Zip"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Archive to Zip';
 
             trigger OnValidate()
@@ -117,7 +108,6 @@ table 5265 "Audit File Export Header"
         }
         field(18; "Create Multiple Zip Files"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Create Multiple Zip Files';
 
             trigger OnValidate()
@@ -128,19 +118,16 @@ table 5265 "Audit File Export Header"
         }
         field(30; "Parallel Processing"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Parallel Processing';
         }
         field(31; "Max No. Of Jobs"; Integer)
         {
-            DataClassification = CustomerContent;
             Caption = 'Max No. Of Jobs';
             MinValue = 1;
             InitValue = 3;
         }
         field(32; "Earliest Start Date/Time"; DateTime)
         {
-            DataClassification = CustomerContent;
             Caption = 'Earliest Start Date/Time';
 
             trigger OnLookup()
@@ -154,7 +141,6 @@ table 5265 "Audit File Export Header"
         }
         field(33; Status; Option)
         {
-            DataClassification = CustomerContent;
             Caption = 'Status';
             OptionMembers = "Not Started","In Progress",Failed,Completed;
             OptionCaption = 'Not Started,In Progress,Failed,Completed';
@@ -162,25 +148,21 @@ table 5265 "Audit File Export Header"
         }
         field(35; "Execution Start Date/Time"; DateTime)
         {
-            DataClassification = CustomerContent;
             Caption = 'Execution Start Date/Time';
             Editable = false;
         }
         field(36; "Execution End Date/Time"; DateTime)
         {
-            DataClassification = CustomerContent;
             Caption = 'Execution End Date/Time';
             Editable = false;
         }
         field(37; "Latest Data Check Date/Time"; DateTime)
         {
-            DataClassification = CustomerContent;
             Caption = 'Latest Data Check Date/Time';
             Editable = false;
         }
-        field(38; "Data check status"; enum "Audit Data Check Status")
+        field(38; "Data check status"; Enum "Audit Data Check Status")
         {
-            DataClassification = CustomerContent;
             Caption = 'Data check status';
             Editable = false;
         }
@@ -196,7 +178,7 @@ table 5265 "Audit File Export Header"
 
     var
         FeatureTelemetry: Codeunit "Feature Telemetry";
-        AuditFileExportTok: label 'Audit File Export', Locked = true;
+        AuditFileExportTok: Label 'Audit File Export', Locked = true;
 
     trigger OnInsert()
     var

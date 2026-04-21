@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -18,13 +18,11 @@ table 5260 "G/L Account Mapping Header"
     {
         field(1; Code; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Code';
             NotBlank = true;
         }
-        field(2; "Standard Account Type"; enum "Standard Account Type")
+        field(2; "Standard Account Type"; Enum "Standard Account Type")
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account Type';
 
             trigger OnValidate()
@@ -46,15 +44,13 @@ table 5260 "G/L Account Mapping Header"
                 end;
             end;
         }
-        field(3; "Audit File Export Format"; enum "Audit File Export Format")
+        field(3; "Audit File Export Format"; Enum "Audit File Export Format")
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Export Format';
             Editable = false;
         }
         field(10; "Starting Date"; Date)
         {
-            DataClassification = CustomerContent;
             Caption = 'Starting Date';
 
             trigger OnValidate()
@@ -70,7 +66,6 @@ table 5260 "G/L Account Mapping Header"
         }
         field(11; "Ending Date"; Date)
         {
-            DataClassification = CustomerContent;
             Caption = 'Ending Date';
 
             trigger OnValidate()
@@ -84,15 +79,13 @@ table 5260 "G/L Account Mapping Header"
                 end;
             end;
         }
-        field(12; "Period Type"; enum "G/L Acc. Mapping Period Type")
+        field(12; "Period Type"; Enum "G/L Acc. Mapping Period Type")
         {
-            DataClassification = CustomerContent;
             Caption = 'Period Type';
             Editable = false;
         }
         field(13; "Accounting Period"; Date)
         {
-            DataClassification = CustomerContent;
             Caption = 'Accounting Period';
             TableRelation = "Accounting Period" where("New Fiscal Year" = const(true));
 
@@ -114,12 +107,10 @@ table 5260 "G/L Account Mapping Header"
         }
         field(14; "Include Incoming Balance"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Include Incoming Balance';
         }
         field(15; "Standard Account Category No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account Category No.';
             TableRelation = "Standard Account Category"."No." where("Standard Account Type" = field("Standard Account Type"));
 
@@ -131,7 +122,6 @@ table 5260 "G/L Account Mapping Header"
         }
         field(16; "Standard Account No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account No.';
             TableRelation = "Standard Account"."No." where(Type = field("Standard Account Type"), "Category No." = field("Standard Account Category No."));
 
@@ -159,11 +149,11 @@ table 5260 "G/L Account Mapping Header"
     }
 
     var
-        DatesAreNotCorrectErr: label 'The starting date is later than the ending date.';
-        MappingExistQst: label 'One or more G/L Account are already mapped. Do you want to remove the mapping?';
-        AuditFileExportDocExistsErr: label 'One or more audit file export documents exist for the mapping. Do you want to remove the mapping?';
-        CannotSelectAccPeriodWithoutEndingDateErr: label 'You cannot select the accounting period that does not have the ending date.';
-        OverwriteMappingQst: label 'Do you want to change the already defined G/L account mapping to a new mapping?';
+        DatesAreNotCorrectErr: Label 'The starting date is later than the ending date.';
+        MappingExistQst: Label 'One or more G/L Account are already mapped. Do you want to remove the mapping?';
+        AuditFileExportDocExistsErr: Label 'One or more audit file export documents exist for the mapping. Do you want to remove the mapping?';
+        CannotSelectAccPeriodWithoutEndingDateErr: Label 'You cannot select the accounting period that does not have the ending date.';
+        OverwriteMappingQst: Label 'Do you want to change the already defined G/L account mapping to a new mapping?';
 
     trigger OnInsert()
     var

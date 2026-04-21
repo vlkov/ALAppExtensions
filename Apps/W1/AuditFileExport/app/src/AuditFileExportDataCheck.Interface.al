@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -11,12 +11,12 @@ interface "Audit File Export Data Check"
     /// </summary>
     /// <param name="AuditFileExportHeader">Audit file export document.</param>
     /// <returns>The status of the data check - Passed or Failed.</returns>
-    procedure CheckDataToExport(var AuditFileExportHeader: Record "Audit File Export Header") DataCheckStatus: enum "Audit Data Check Status"
+    procedure CheckDataToExport(var AuditFileExportHeader: Record "Audit File Export Header") DataCheckStatus: Enum "Audit Data Check Status"
 
     /// <summary>
     /// Checks if the selected audit file export document is ready for exporting, for example if all required fields are filled.
     /// </summary>
     /// <param name="AuditFileExportHeader">Audit file export document.</param>
     /// <returns>The status of the data check - Passed or Failed.</returns>
-    procedure CheckAuditDocReadyToExport(var AuditFileExportHeader: Record "Audit File Export Header") DataCheckStatus: enum "Audit Data Check Status"
+    procedure CheckAuditDocReadyToExport(var AuditFileExportHeader: Record "Audit File Export Header") DataCheckStatus: Enum "Audit Data Check Status"
 }

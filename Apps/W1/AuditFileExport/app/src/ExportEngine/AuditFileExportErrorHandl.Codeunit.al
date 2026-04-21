@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -26,8 +26,8 @@ codeunit 5263 "Audit File Export Error Handl."
     end;
 
     var
-        FailedExportTxt: label 'Failed to export data for the line with ID: %1, Task ID: %2', Comment = '%1 - integer; %2 - GUID';
-        AuditFileExportTxt: label 'Audit file export';
+        FailedExportTxt: Label 'Failed to export data for the line with ID: %1, Task ID: %2', Comment = '%1 - integer; %2 - GUID';
+        AuditFileExportTxt: Label 'Audit file export';
 
     local procedure GetCancelTraceTagMessage(AuditFileExportLine: Record "Audit File Export Line"): Text
     begin

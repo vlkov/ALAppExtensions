@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ codeunit 5266 "Audit File Data Handling" implements "Audit File Export Data Hand
 {
     Access = Internal;
 
-    procedure LoadStandardAccounts(StandardAccountType: enum "Standard Account Type") Result: Boolean
+    procedure LoadStandardAccounts(StandardAccountType: Enum "Standard Account Type") Result: Boolean
     begin
     end;
 

@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -8,27 +8,25 @@ table 5269 "Audit Export Data Type Setup"
 {
     DataClassification = CustomerContent;
     Caption = 'Audit Export Data Type Setup';
+    LookupPageId = "Audit Export Data Type Setup";
+    DrillDownPageId = "Audit Export Data Type Setup";
 
     fields
     {
-        field(1; "Audit File Export Format"; enum "Audit File Export Format")
+        field(1; "Audit File Export Format"; Enum "Audit File Export Format")
         {
-            DataClassification = CustomerContent;
             Caption = 'Audit File Export Format';
         }
-        field(2; "Export Data Type"; enum "Audit File Export Data Type")
+        field(2; "Export Data Type"; Enum "Audit File Export Data Type")
         {
-            DataClassification = CustomerContent;
             Caption = 'Export Data Type';
         }
-        field(3; "Export Data Class"; enum "Audit File Export Data Class")
+        field(3; "Export Data Class"; Enum "Audit File Export Data Class")
         {
-            DataClassification = CustomerContent;
             Caption = 'Data Class';
         }
         field(4; "Export Enabled"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'Export Enabled';
         }
     }
@@ -41,7 +39,7 @@ table 5269 "Audit Export Data Type Setup"
         }
     }
 
-    procedure InsertRecord(AuditFileExportFormat: enum "Audit File Export Format"; ExportDataType: enum "Audit File Export Data Type"; ExportDataClass: enum "Audit File Export Data Class"; ExportEnabled: Boolean)
+    procedure InsertRecord(AuditFileExportFormat: Enum "Audit File Export Format"; ExportDataType: Enum "Audit File Export Data Type"; ExportDataClass: Enum "Audit File Export Data Class"; ExportEnabled: Boolean)
     begin
         if not Rec.Get(AuditFileExportFormat, ExportDataType) then begin
             Rec.Init();

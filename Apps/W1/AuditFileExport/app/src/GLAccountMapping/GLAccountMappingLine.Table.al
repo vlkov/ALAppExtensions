@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -15,7 +15,6 @@ table 5261 "G/L Account Mapping Line"
     {
         field(1; "G/L Account Mapping Code"; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'G/L Account Mapping Code';
             TableRelation = "G/L Account Mapping Header";
             Editable = false;
@@ -23,20 +22,17 @@ table 5261 "G/L Account Mapping Line"
         }
         field(2; "G/L Account No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'G/L Account No.';
             TableRelation = "G/L Account";
             Editable = false;
             NotBlank = true;
         }
-        field(3; "Standard Account Type"; enum "Standard Account Type")
+        field(3; "Standard Account Type"; Enum "Standard Account Type")
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account Type';
         }
         field(4; "Standard Account Category No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account Category No.';
             TableRelation = "Standard Account Category"."No." where("Standard Account Type" = field("Standard Account Type"));
 
@@ -47,7 +43,6 @@ table 5261 "G/L Account Mapping Line"
         }
         field(5; "Standard Account No."; Code[20])
         {
-            DataClassification = CustomerContent;
             Caption = 'Standard Account No.';
             TableRelation = "Standard Account"."No." where(Type = field("Standard Account Type"));
 
@@ -69,7 +64,6 @@ table 5261 "G/L Account Mapping Line"
         }
         field(6; "G/L Entries Exists"; Boolean)
         {
-            DataClassification = CustomerContent;
             Caption = 'G/L Entries Exists';
             Editable = false;
         }

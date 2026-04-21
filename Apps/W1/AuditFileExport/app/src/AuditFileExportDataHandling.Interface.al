@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ interface "Audit File Export Data Handling"
     /// </summary>
     /// <param name="StandardAccountType">Standard G/L Account Type</param>
     /// <returns>true if all G/L accounts were uploaded.</returns>
-    procedure LoadStandardAccounts(StandardAccountType: enum "Standard Account Type") Result: Boolean;
+    procedure LoadStandardAccounts(StandardAccountType: Enum "Standard Account Type") Result: Boolean;
 
     /// <summary>
     /// Creates lines for the selected audit file export document.

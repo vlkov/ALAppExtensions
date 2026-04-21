@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -13,23 +13,23 @@ codeunit 5260 "Audit Mapping Helper"
 
     var
         ConfirmMgt: Codeunit "Confirm Management";
-        PreparingSourceForMappingLbl: label 'Preparing the source for mapping...';
-        ChartOfAccountsDoesNotExistErr: label 'A chart of accounts does not exist in the current company.';
-        StartingDateNotFilledErr: label 'You must specify a starting date.';
-        EndingDateNotFilledErr: label 'You must specify an ending date.';
-        StandardAccountsMatchedMsg: label '%1 of %2 standard accounts have been automatically matched to the chart of accounts.', Comment = '%1,%2 = both integer values';
-        DifferentMappingTypeErr: label 'It is not possible to copy the mapping due to different standard account types.';
-        MatchChartOfAccountsQst: label 'Do you want to match a chart of accounts with standard account codes?';
-        CreateChartOfAccountsQst: label 'Do you want to create a chart of accounts based on standard account codes?';
-        NoGLAccountMappingErr: label 'G/L account mapping %1 does not have any lines.', Comment = '%1 = G/L Account Mapping Header Code';
-        MappingExistsErr: label 'A mapping line for category %1 with standard G/L account code %2 already exists for mapping %3.', Comment = '%1 = category no., %2 = standard G/L account code, %3 = G/L Account Mapping Header Code';
-        MappingNotDoneErr: label 'One or more G/L accounts do not have a mapping setup. Open the G/L Account Mapping page for the selected mapping and map each G/L account either to the standard account or the grouping code.';
-        MappingDoneErr: label 'One or more G/L accounts are already mapped. Create a new mapping with another standard account type.';
-        ChartOfAccountsAlreadyExistsErr: label 'A chart of accounts must be empty to be created based on standard accounts.';
-        StandardAccountsNotExistErr: label 'Standard accounts of type %1 do not exist.', Comment = '%1 - Standard Account Type';
-        DefaultLbl: label 'DEFAULT';
-        TwoStringsTxt: label '%1/%2', Comment = '%1, %2 - strings to concatenate';
-        TwoStringsWithSpaceTxt: label '%1 %2', Comment = '%1, %2 - strings to concatenate';
+        PreparingSourceForMappingLbl: Label 'Preparing the source for mapping...';
+        ChartOfAccountsDoesNotExistErr: Label 'A chart of accounts does not exist in the current company.';
+        StartingDateNotFilledErr: Label 'You must specify a starting date.';
+        EndingDateNotFilledErr: Label 'You must specify an ending date.';
+        StandardAccountsMatchedMsg: Label '%1 of %2 standard accounts have been automatically matched to the chart of accounts.', Comment = '%1,%2 = both integer values';
+        DifferentMappingTypeErr: Label 'It is not possible to copy the mapping due to different standard account types.';
+        MatchChartOfAccountsQst: Label 'Do you want to match a chart of accounts with standard account codes?';
+        CreateChartOfAccountsQst: Label 'Do you want to create a chart of accounts based on standard account codes?';
+        NoGLAccountMappingErr: Label 'G/L account mapping %1 does not have any lines.', Comment = '%1 = G/L Account Mapping Header Code';
+        MappingExistsErr: Label 'A mapping line for category %1 with standard G/L account code %2 already exists for mapping %3.', Comment = '%1 = category no., %2 = standard G/L account code, %3 = G/L Account Mapping Header Code';
+        MappingNotDoneErr: Label 'One or more G/L accounts do not have a mapping setup. Open the G/L Account Mapping page for the selected mapping and map each G/L account either to the standard account or the grouping code.';
+        MappingDoneErr: Label 'One or more G/L accounts are already mapped. Create a new mapping with another standard account type.';
+        ChartOfAccountsAlreadyExistsErr: Label 'A chart of accounts must be empty to be created based on standard accounts.';
+        StandardAccountsNotExistErr: Label 'Standard accounts of type %1 do not exist.', Comment = '%1 - Standard Account Type';
+        DefaultLbl: Label 'DEFAULT', MaxLength = 20;
+        TwoStringsTxt: Label '%1/%2', Comment = '%1, %2 - strings to concatenate';
+        TwoStringsWithSpaceTxt: Label '%1 %2', Comment = '%1, %2 - strings to concatenate';
 
     trigger OnRun()
     begin
@@ -130,7 +130,7 @@ codeunit 5260 "Audit Mapping Helper"
     begin
         if GLAccountMappingCode = '' then
             exit;
-        if not GLAccountMappingHeader.get(GLAccountMappingCode) then
+        if not GLAccountMappingHeader.Get(GLAccountMappingCode) then
             exit;
         GLAccountMappingLine.SetRange("G/L Account Mapping Code", GLAccountMappingHeader.Code);
         if GLAccountMappingLine.FindSet() then
@@ -143,7 +143,7 @@ codeunit 5260 "Audit Mapping Helper"
             until GLAccountMappingLine.Next() = 0;
     end;
 
-    procedure AreStandardAccountsLoaded(StandardAccountType: enum "Standard Account Type"): Boolean;
+    procedure AreStandardAccountsLoaded(StandardAccountType: Enum "Standard Account Type"): Boolean
     var
         StandardAccount: Record "Standard Account";
     begin
@@ -255,7 +255,7 @@ codeunit 5260 "Audit Mapping Helper"
                 GLAccountMappingLine."G/L Account No." := GLAccount."No.";
                 GLAccountMappingLine."G/L Account Mapping Code" := GLAccountMappingHeader.Code;
                 GLAccountMappingLine."Standard Account No." := StandardAccount."No.";
-                if not GLAccountMappingLine.insert() then
+                if not GLAccountMappingLine.Insert() then
                     GLAccountMappingLine.Modify();
                 MatchedCount += 1;
             end;

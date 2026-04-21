@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -9,6 +9,8 @@ page 5268 "Audit Files"
     PageType = List;
     SourceTable = "Audit File";
     Caption = 'Audit Files';
+    ApplicationArea = Basic, Suite;
+    UsageCategory = None;
 
     layout
     {
@@ -18,12 +20,10 @@ page 5268 "Audit Files"
             {
                 field("No."; Rec."File No.")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the file.';
                 }
                 field(AuditFileName; Rec."File Name")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name with which the file will be downloaded.';
 
                     trigger OnDrillDown()
@@ -35,7 +35,6 @@ page 5268 "Audit Files"
                 }
                 field(AuditFileSize; Rec."File Size")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the size of the file.';
                 }
             }
@@ -48,7 +47,6 @@ page 5268 "Audit Files"
         {
             action(DownloadFile)
             {
-                ApplicationArea = Basic, Suite;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;

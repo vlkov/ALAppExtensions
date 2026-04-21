@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -11,6 +11,7 @@ page 5262 "G/L Account Mapping Subpage"
     InsertAllowed = false;
     DeleteAllowed = false;
     Caption = 'Lines';
+    ApplicationArea = Basic, Suite;
 
     layout
     {
@@ -20,25 +21,21 @@ page 5262 "G/L Account Mapping Subpage"
             {
                 field(GLAccountNo; Rec."G/L Account No.")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the account that is used to map the standard account or grouping code.';
                     StyleExpr = GLAccStyleExpr;
                     Editable = false;
                 }
                 field(GLAccountName; Rec."G/L Account Name")
                 {
-                    ApplicationArea = Basic, Suite;
                     Editable = false;
                     ToolTip = 'Specifies the name of the account that is used to map the standard account or grouping code.';
                 }
                 field(CategoryNo; Rec."Standard Account Category No.")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the category of the standard account or grouping code that is used for mapping.';
                 }
                 field(StandardAccountNo; Rec."Standard Account No.")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the code of the standard account or grouping code that is used for mapping.';
                 }
             }
@@ -51,11 +48,10 @@ page 5262 "G/L Account Mapping Subpage"
         {
             action(UpdateGLEntriesExists)
             {
-                ApplicationArea = Basic, Suite;
                 Caption = 'Update G/L Entry Availability';
                 ToolTip = 'Mark G/L accounts that have posted G/L entries in green. If option Include Incoming Balance enabled then all posted G/L entries are considered for calculation. Otherwise only G/L entries of the reporting period are considered.';
                 Image = PostingEntries;
-                trigger OnAction();
+                trigger OnAction()
                 var
                     GLAccountMappingHelper: Codeunit "Audit Mapping Helper";
                 begin

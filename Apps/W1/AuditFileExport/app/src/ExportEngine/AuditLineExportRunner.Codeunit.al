@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -11,8 +11,8 @@ codeunit 5265 "Audit Line Export Runner"
     TableNo = "Audit File Export Line";
 
     var
-        NoFileContentErr: label 'No file content was generated for the audit file export line.';
-        NoFileNameErr: label 'No file name was specified for the audit file export line.';
+        NoFileContentErr: Label 'No file content was generated for the audit file export line.';
+        NoFileNameErr: Label 'No file name was specified for the audit file export line.';
 
     trigger OnRun()
     var

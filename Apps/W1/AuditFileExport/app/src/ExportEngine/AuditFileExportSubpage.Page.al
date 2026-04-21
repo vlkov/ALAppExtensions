@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 // ------------------------------------------------------------------------------------------------
@@ -12,6 +12,7 @@ page 5269 "Audit File Export Subpage"
     InsertAllowed = false;
     ModifyAllowed = false;
     DeleteAllowed = false;
+    ApplicationArea = Basic, Suite;
 
     layout
     {
@@ -21,22 +22,18 @@ page 5269 "Audit File Export Subpage"
             {
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the description of the selected audit file.';
                 }
                 field(Progress; Rec.Progress)
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the progress of the generation of the selected audit file.';
                 }
                 field(Status; Rec.Status)
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the status of the generation of the selected audit file.';
                 }
                 field("Created Date/Time"; Rec."Created Date/Time")
                 {
-                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the date and time when the generation of the selected audit file was completed.';
                 }
             }
@@ -49,12 +46,11 @@ page 5269 "Audit File Export Subpage"
         {
             action(RestartTask)
             {
-                ApplicationArea = Basic, Suite;
                 Caption = 'Restart';
                 ToolTip = 'Restart the generation of the selected audit file.';
                 Image = PostingEntries;
 
-                trigger OnAction();
+                trigger OnAction()
                 var
                     AuditFileExportLine: Record "Audit File Export Line";
                     AuditFileExportMgt: Codeunit "Audit File Export Mgt.";
@@ -66,12 +62,11 @@ page 5269 "Audit File Export Subpage"
             }
             action(ShowError)
             {
-                ApplicationArea = Basic, Suite;
                 Caption = 'Show Error';
                 ToolTip = 'Show the error that occurred during the generation the selected audit file.';
                 Image = Error;
 
-                trigger OnAction();
+                trigger OnAction()
                 var
                     AuditFileExportMgt: Codeunit "Audit File Export Mgt.";
                 begin
@@ -81,7 +76,6 @@ page 5269 "Audit File Export Subpage"
             }
             action(LogEntries)
             {
-                ApplicationArea = Basic, Suite;
                 Caption = 'Activity Log';
                 ToolTip = 'Show the activity log for the generation of the selected audit file.';
                 Image = Log;
@@ -95,7 +89,6 @@ page 5269 "Audit File Export Subpage"
             }
             action(DownloadFile)
             {
-                ApplicationArea = Basic, Suite;
                 Image = ExportFile;
                 Caption = 'Download as File';
                 ToolTip = 'Download the audit file for the selected line.';
@@ -109,7 +102,6 @@ page 5269 "Audit File Export Subpage"
             }
             action(RefreshPage)
             {
-                ApplicationArea = Basic, Suite;
                 Image = Refresh;
                 Caption = 'Refresh the page';
                 ToolTip = 'Refresh the page to see the export progress.';
